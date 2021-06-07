@@ -2,7 +2,8 @@
   "version": 1,
   "cli": {
     "analytics": false,
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "npm"
   },
   "defaultProject": "todos",
   "projects": {
