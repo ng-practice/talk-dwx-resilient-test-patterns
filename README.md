@@ -1,9 +1,5 @@
 ## Angular solid foundations - from zero to hero
 
-<div align="center">
-  <img src="docs/logo.svg" alt="NG-DE Logo" width="250">
-</div>
-
 > https://ng-de.org/workshops/angular-solid-foundations/
 
 Hello 👋,
@@ -61,11 +57,8 @@ git clone https://github.com/ng-practice/ng-de-2019.git workshop
 # Switch into repository directory
 cd workshop
 
-# Install dependencies for Angular application
-npm install --prefix client
-
-# Install dependencies for Backend
-npm install --prefix server
+# Install dependencies
+npm instal
 ```
 
 Please verify that both angular application and backend run on your system.
@@ -75,23 +68,15 @@ Please verify that both angular application and backend run on your system.
 > Hint you can exit the development web server hitting <kbd>CTRL</kbd>+<kbd>C</kbd>.
 
 ```bash
-cd client
-npm start
+nx serve todos
 ```
-
-![Angular CLI Output](./docs/ng-cli-output.png)
-_The output of a successfully started Angular application_
 
 **Backend**
 
 > Hint you can exit the development web server hitting <kbd>CTRL</kbd>+<kbd>C</kbd>.
 
 ```bash
-cd server
-npm start
+nx serve api
 ```
 
-![Angular CLI Output](./docs/json-db-output.png)
-_The output of a successfully started backend_
-
-📖️ Please see the [server README](./server/README.md) for an API documentation.
+📖️ Please see the [server README](./apps/api/README.md) for an API documentation.
