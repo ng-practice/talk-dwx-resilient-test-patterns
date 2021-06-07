@@ -1,7 +1,10 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "cli": {
+    "analytics": false,
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "todos",
   "projects": {
     "todos": {
       "projectType": "application",
@@ -10,29 +13,34 @@
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "apps/todos",
+      "sourceRoot": "apps/todos/src",
       "prefix": "nde",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/todos",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/apps/todos",
+            "index": "apps/todos/src/index.html",
+            "main": "apps/todos/src/main.ts",
+            "polyfills": "apps/todos/src/polyfills.ts",
+            "tsConfig": "apps/todos/tsconfig.app.json",
             "aot": false,
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "assets": [
+              "apps/todos/src/favicon.ico",
+              "apps/todos/src/assets"
+            ],
+            "styles": [
+              "apps/todos/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/todos/src/environments/environment.ts",
+                  "with": "apps/todos/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -79,12 +87,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "main": "apps/todos/src/test.ts",
+            "polyfills": "apps/todos/src/polyfills.ts",
+            "tsConfig": "apps/todos/tsconfig.spec.json",
+            "karmaConfig": "apps/todos/karma.conf.js",
+            "assets": [
+              "apps/todos/src/favicon.ico",
+              "apps/todos/src/assets"
+            ],
+            "styles": [
+              "apps/todos/src/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -92,11 +105,12 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "apps/todos/tsconfig.app.json",
+              "apps/todos/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
@@ -112,7 +126,33 @@
           }
         }
       }
+    },
+    "todos-e2e": {
+      "root": "apps/todos-e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/todos-e2e/protractor.conf.js",
+            "devServerTarget": "todos:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "todos:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/todos-e2e/tsconfig.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
-  },
-  "defaultProject": "todos"
+  }
 }
