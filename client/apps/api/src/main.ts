@@ -1,7 +1,7 @@
 import jsonServer = require('json-server');
 
 const server = jsonServer.create();
-const router = jsonServer.router('src/assets/db.json');
+const router = jsonServer.router(`${__dirname}/assets/db.json`);
 const middlewares = jsonServer.defaults();
 const rewrites = jsonServer.rewriter({
   '/todos?query=all': '/todos',
@@ -10,8 +10,8 @@ const rewrites = jsonServer.rewriter({
 });
 
 server.use(middlewares);
-server.use(router);
 server.use(rewrites);
-server.listen(3001, () =>
-  console.log('JSON Server is running at http://localhost:3001')
+server.use(router);
+server.listen(3333, () =>
+  console.log('JSON Server is running at http://localhost:3333')
 );
