@@ -1,14 +1,21 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  Inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Todo } from './models';
 import { TodosService } from './shared/todos.service';
+import { APP_TITLE } from './tokens';
 
 @Component({
   selector: 'nde-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.scss']
+  styleUrls: ['./todos.component.scss'],
 })
 export class TodosComponent implements OnInit, OnDestroy {
   private sink = new Subscription();
@@ -19,16 +26,19 @@ export class TodosComponent implements OnInit, OnDestroy {
 
   constructor(
     private todosService: TodosService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    @Inject(APP_TITLE) public readonly appTitle: string
   ) {}
 
   ngOnInit(): void {
     this.sink.add(
       this.route.paramMap
         .pipe(
-          switchMap(paramMap => this.todosService.query(paramMap.get('query')))
+          switchMap((paramMap) =>
+            this.todosService.query(paramMap.get('query'))
+          )
         )
-        .subscribe(todos => (this.todos = todos))
+        .subscribe((todos) => (this.todos = todos))
     );
   }
 
@@ -37,7 +47,7 @@ export class TodosComponent implements OnInit, OnDestroy {
   }
 
   get activeTodos() {
-    return this.todos.filter(todo => !todo.isDone).length;
+    return this.todos.filter((todo) => !todo.isDone).length;
   }
 
   addTodo(newTodo: Todo) {
@@ -45,7 +55,7 @@ export class TodosComponent implements OnInit, OnDestroy {
       this.todosService
         .create(newTodo)
         .pipe(switchMap(() => this.todosService.query()))
-        .subscribe(todos => (this.todos = todos))
+        .subscribe((todos) => (this.todos = todos))
     );
   }
 
@@ -54,7 +64,7 @@ export class TodosComponent implements OnInit, OnDestroy {
       this.todosService
         .completeOrIncomplete(todoForUpdate)
         .pipe(switchMap(() => this.todosService.query()))
-        .subscribe(todos => (this.todos = todos))
+        .subscribe((todos) => (this.todos = todos))
     );
   }
 
@@ -63,7 +73,7 @@ export class TodosComponent implements OnInit, OnDestroy {
       this.todosService
         .remove(todoForRemoval)
         .pipe(switchMap(() => this.todosService.query()))
-        .subscribe(todos => (this.todos = todos))
+        .subscribe((todos) => (this.todos = todos))
     );
   }
 }
