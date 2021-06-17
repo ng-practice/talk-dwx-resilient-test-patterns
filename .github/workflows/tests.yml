@@ -28,6 +28,13 @@ jobs:
           install: false
           headless: true
 
+      - name: Run component tests
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run nx e2e:component
+          install: false
+          headless: true
+
       - uses: actions/upload-artifact@v2
         if: failure()
         with:
