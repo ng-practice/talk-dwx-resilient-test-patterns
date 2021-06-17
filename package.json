@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
+    "e2e:component": "cypress open-ct --project ./apps/todos",
     "nx": "nx",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
@@ -25,7 +26,7 @@
     "dep-graph": "nx dep-graph",
     "workspace-schematic": "nx workspace-schematic",
     "help": "nx help",
-    "postinstall": "node ./decorate-angular-cli.js"
+    "postinstall": "node ./decorate-angular-cli.js && ngcc"
   },
   "private": true,
   "dependencies": {
@@ -63,6 +64,7 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.19.0",
     "@typescript-eslint/parser": "4.19.0",
+    "@jscutlery/cypress-angular": "0.5.1",
     "cypress": "7.5.0",
     "eslint": "7.22.0",
     "eslint-config-prettier": "8.1.0",
