@@ -9,6 +9,7 @@
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
     "e2e:component": "cypress open-ct --project ./apps/todos",
+    "e2e:component:ci": "cypress run-ct --project ./apps/todos",
     "nx": "nx",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",

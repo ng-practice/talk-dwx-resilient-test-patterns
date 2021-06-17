@@ -31,7 +31,7 @@ jobs:
       - name: Run component tests
         uses: cypress-io/github-action@v2
         with:
-          command: npm run e2e:component
+          command: npm run e2e:component:ci
           install: false
           headless: true
 
