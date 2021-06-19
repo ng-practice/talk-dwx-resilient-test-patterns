@@ -18,7 +18,7 @@
     "todos": {
       "tags": []
     },
-    "todos-e2e": {
+    "todos-cypress": {
       "tags": [],
       "implicitDependencies": ["todos"]
     }
