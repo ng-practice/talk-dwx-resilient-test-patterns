@@ -24,7 +24,7 @@ jobs:
       - name: Run e2e tests
         uses: cypress-io/github-action@v2
         with:
-          command: npm run nx e2e
+          command: npm run e2e:ci
           install: false
           headless: true
 
@@ -32,6 +32,13 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           command: npm run e2e:component:ci
+          install: false
+          headless: true
+
+      - name: Run storybook tests
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run e2e:storybook:ci
           install: false
           headless: true
 
