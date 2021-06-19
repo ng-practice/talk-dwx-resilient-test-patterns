@@ -3,5 +3,6 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc"
   },
-  "files": ["src/main.ts", "src/polyfills.ts"]
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "exclude": ["**/*.stories.ts", "**/*.stories.js"]
 }
