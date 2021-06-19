@@ -1,4 +1,5 @@
 {
+  "$schema": "https://on.cypress.io/cypress.schema.json",
   "pluginsFile": "./cypress/plugins/index.ts",
   "supportFile": "./cypress/support/index.ts",
   "component": {
