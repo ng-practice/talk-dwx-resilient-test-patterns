@@ -12,15 +12,15 @@
   },
   "npmScope": "todos",
   "projects": {
+    "api": {
+      "tags": []
+    },
     "todos": {
       "tags": []
     },
     "todos-e2e": {
       "tags": [],
       "implicitDependencies": ["todos"]
-    },
-    "api": {
-      "tags": []
     }
   }
 }
