@@ -21,6 +21,10 @@
     "todos-cypress": {
       "tags": [],
       "implicitDependencies": ["todos"]
+    },
+    "todos-storybook-tests": {
+      "tags": [],
+      "implicitDependencies": ["todos"]
     }
   }
 }

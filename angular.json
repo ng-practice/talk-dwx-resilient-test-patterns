@@ -215,6 +215,32 @@
           }
         }
       }
+    },
+    "todos-storybook-tests": {
+      "root": "apps/todos-storybook-tests",
+      "sourceRoot": "apps/todos-storybook-tests/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/todos-storybook-tests/cypress.json",
+            "tsConfig": "apps/todos-storybook-tests/tsconfig.e2e.json",
+            "devServerTarget": "todos:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "todos:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/todos-storybook-tests/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   }
 }
