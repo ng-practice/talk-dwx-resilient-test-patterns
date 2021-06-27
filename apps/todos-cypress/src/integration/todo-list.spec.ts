@@ -87,4 +87,20 @@ describe('todo list', () => {
       isDone: false,
     });
   });
+
+  it.only('should not show waiting message', () => {
+    cy.intercept('/api?query=all', {
+      body: [],
+    });
+    cy.intercept('POST', '/api', {
+      body: [],
+    }).as('add');
+    cy.visit('/');
+
+    cy.findAllByRole('checkbox').should('have.length', 0);
+
+    cy.findByRole('textbox').type('give DWX talk');
+    cy.findByRole('button', { name: /add/i }).click();
+    cy.findByTestId('waiting-message').should('not.exist');
+  });
 });
