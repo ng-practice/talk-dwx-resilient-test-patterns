@@ -68,7 +68,9 @@ describe('Testing Library ' + TodoCheckerComponent.name, () => {
       componentProperties: { todo: { isDone: false, text: 'Buy milk' } },
     });
 
-    expect(screen.getByRole('checkbox')).not.toBeChecked();
+    expect(
+      screen.getByRole('checkbox', { name: 'Buy milk' })
+    ).not.toBeChecked();
 
     screen.getByRole('checkbox').click();
 
