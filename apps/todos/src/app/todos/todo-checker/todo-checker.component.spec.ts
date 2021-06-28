@@ -68,11 +68,11 @@ describe('Testing Library ' + TodoCheckerComponent.name, () => {
       componentProperties: { todo: { isDone: false, text: 'Buy milk' } },
     });
 
-    expect(screen.queryByRole('checkbox')).not.toBeChecked();
+    expect(screen.getByRole('checkbox')).not.toBeChecked();
 
-    screen.queryByRole('checkbox').click();
+    screen.getByRole('checkbox').click();
 
-    expect(screen.queryByRole('checkbox')).toBeChecked();
+    expect(screen.getByRole('checkbox')).toBeChecked();
   });
 });
 
@@ -82,10 +82,10 @@ describe('Testing Library / Test Id' + TodoCheckerComponent.name, () => {
       componentProperties: { todo: { isDone: false, text: 'Buy milk' } },
     });
 
-    expect(screen.queryByTestId('todo-checkbox')).not.toBeChecked();
+    expect(screen.getByTestId('todo-checkbox')).not.toBeChecked();
 
-    screen.queryByTestId('todo-checkbox').click();
+    screen.getByTestId('todo-checkbox').click();
 
-    expect(screen.queryByTestId('todo-checkbox')).toBeChecked();
+    expect(screen.getByTestId('todo-checkbox')).toBeChecked();
   });
 });
