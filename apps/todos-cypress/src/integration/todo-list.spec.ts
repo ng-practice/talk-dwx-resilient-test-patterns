@@ -1,3 +1,5 @@
+import { Todo } from '../../../../libs/shared-interfaces/src';
+
 describe('todo list', () => {
   it('should show todo items', () => {
     cy.intercept('/api?query=all', {
@@ -12,7 +14,7 @@ describe('todo list', () => {
           isDone: true,
           id: 2,
         },
-      ],
+      ] as Todo[],
     });
     cy.visit('/');
 
@@ -38,14 +40,14 @@ describe('todo list', () => {
           isDone: false,
           id: 2,
         },
-      ],
+      ] as Todo[],
     });
     cy.intercept('PUT', '/api/2', {
       body: {
         text: 'test TODO 2',
         isDone: true,
         id: 2,
-      },
+      } as Todo,
     });
     cy.visit('/');
 
@@ -63,7 +65,7 @@ describe('todo list', () => {
           isDone: true,
           id: 2,
         },
-      ],
+      ] as Todo[],
     });
     cy.findByText('test TODO 2').click();
     cy.findByTestId('todo-counter').should('contain.text', '1Item(s) left');

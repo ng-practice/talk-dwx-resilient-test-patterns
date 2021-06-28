@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Todo } from '../models';
+import { Todo } from '@todos/shared-interfaces';
 
 @Component({
   selector: 'nde-todo-quick-add',
   templateUrl: './todo-quick-add.component.html',
-  styleUrls: ['./todo-quick-add.component.scss']
+  styleUrls: ['./todo-quick-add.component.scss'],
 })
 export class TodoQuickAddComponent {
   @Output() create = new EventEmitter<Todo>();

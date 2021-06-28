@@ -1,5 +1,5 @@
 import { mount } from '@jscutlery/cypress-angular/mount';
-import { Todo } from '../models';
+import { Todo } from '@todos/shared-interfaces';
 import { TodoCheckerComponent } from './todo-checker.component';
 
 describe('TodoCheckerComponent', () => {

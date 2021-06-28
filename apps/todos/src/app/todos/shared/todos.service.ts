@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Todo } from '@todos/shared-interfaces';
 import { Observable } from 'rxjs';
-import { Todo } from '../models';
 
 const todosUrl = '/api';
 

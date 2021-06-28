@@ -2,14 +2,17 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ActivatedRoute, ActivatedRouteSnapshot, convertToParamMap } from '@angular/router';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  convertToParamMap,
+} from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { render, screen } from '@testing-library/angular';
+import { Todo } from '@todos/shared-interfaces';
 import { mockNg, mockProvider } from 'ng-mockito';
-import { mockToken } from 'ng-mockito/lib/mock-token';
 import { NEVER, of } from 'rxjs';
 import { anyString, capture, instance, mock, verify, when } from 'ts-mockito';
-import { Todo } from './models/todo';
 import { TodosService } from './shared/todos.service';
 import { TodosComponent } from './todos.component';
 import { TodosModule } from './todos.module';
@@ -31,14 +34,19 @@ describe('TodosComponent', () => {
             provide: TodosService,
             useValue: {
               // ⚠️ no type safety
-              query: () => of([{ text: 'test TODO 1' }, { text: 'test TODO 2' }]),
+              query: () =>
+                of([{ text: 'test TODO 1' }, { text: 'test TODO 2' }]),
             },
           },
           {
             provide: TodosService,
             useValue: {
               // better, but still not completely type-safe
-              query: () => of([{ text: 'test TODO 1' } as Todo, { text: 'test TODO 2' } as Todo]),
+              query: () =>
+                of([
+                  { text: 'test TODO 1' } as Todo,
+                  { text: 'test TODO 2' } as Todo,
+                ]),
             } as TodosService,
           },
         ],
@@ -254,7 +262,9 @@ describe('TodosComponent', () => {
 
       await render(TodosComponent, {
         providers: [
-          mockProvider(mockTodosService, (mock) => when(mock.query(anyString())).thenReturn(of([]))),
+          mockProvider(mockTodosService, (mock) =>
+            when(mock.query(anyString())).thenReturn(of([]))
+          ),
           mockProvider(ActivatedRoute, (mock) =>
             when(mock.paramMap).thenReturn(
               of(
@@ -279,8 +289,12 @@ describe('TodosComponent', () => {
 
       await render(TodosComponent, {
         providers: [
-          mockNg(mockTodosService, (mock) => when(mock.query(anyString())).thenReturn(NEVER)),
-          mockNg(ActivatedRoute, (mock) => when(mock.paramMap).thenReturn(NEVER)),
+          mockNg(mockTodosService, (mock) =>
+            when(mock.query(anyString())).thenReturn(NEVER)
+          ),
+          mockNg(ActivatedRoute, (mock) =>
+            when(mock.paramMap).thenReturn(NEVER)
+          ),
           mockNg([APP_TITLE, TodosComponent], {
             use: 'Test Heading' /* type-safe */,
           }),
@@ -306,7 +320,11 @@ describe('TodosComponent', () => {
         )
       );
 
-      const component = new TodosComponent(instance(mockTodosService), instance(mockActivatedRoute), '');
+      const component = new TodosComponent(
+        instance(mockTodosService),
+        instance(mockActivatedRoute),
+        ''
+      );
 
       component.ngOnInit();
 

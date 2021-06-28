@@ -15,6 +15,9 @@
     "api": {
       "tags": []
     },
+    "shared-interfaces": {
+      "tags": []
+    },
     "todos": {
       "tags": []
     },
