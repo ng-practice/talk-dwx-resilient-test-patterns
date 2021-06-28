@@ -6,9 +6,9 @@ import {
   OnInit,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Todo } from '@todos/shared-interfaces';
 import { Subscription } from 'rxjs';
 import { delay, switchMap, tap } from 'rxjs/operators';
-import { Todo } from './models';
 import { TodosService } from './shared/todos.service';
 import { APP_TITLE } from './tokens';
 

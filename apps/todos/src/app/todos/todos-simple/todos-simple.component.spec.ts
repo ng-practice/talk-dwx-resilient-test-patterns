@@ -1,19 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TodosComponent } from './todos-simple.component';
-import { fireEvent, render, screen } from '@testing-library/angular';
-import { TodoCheckerComponent } from '../todo-checker/todo-checker.component';
-import {
-  CUSTOM_ELEMENTS_SCHEMA,
-  NO_ERRORS_SCHEMA,
-  EventEmitter,
-} from '@angular/core';
-import { TodoQuickAddComponent } from '../todo-quick-add/todo-quick-add.component';
+import { EventEmitter, NO_ERRORS_SCHEMA } from '@angular/core';
+import { render, screen } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
+import { Todo } from '@todos/shared-interfaces';
 import { mockNg } from 'ng-mockito';
 import { when } from 'ts-mockito';
-import { BehaviorSubject, of } from 'rxjs';
-import { Todo } from '../models';
+import { TodoCheckerComponent } from '../todo-checker/todo-checker.component';
+import { TodoQuickAddComponent } from '../todo-quick-add/todo-quick-add.component';
+import { TodosComponent } from './todos-simple.component';
 
 describe('TodosComponent', () => {
   describe('when testing isolated', () => {

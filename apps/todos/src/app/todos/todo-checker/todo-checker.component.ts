@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Todo } from '../models';
+import { Todo } from '@todos/shared-interfaces';
 
 @Component({
   selector: 'nde-todo-checker',
   templateUrl: './todo-checker.component.html',
-  styleUrls: ['./todo-checker.component.scss']
+  styleUrls: ['./todo-checker.component.scss'],
 })
 export class TodoCheckerComponent {
   @Input() todo: Todo;

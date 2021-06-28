@@ -57,6 +57,31 @@
         }
       }
     },
+    "shared-interfaces": {
+      "projectType": "library",
+      "root": "libs/shared-interfaces",
+      "sourceRoot": "libs/shared-interfaces/src",
+      "prefix": "todos",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared-interfaces"],
+          "options": {
+            "jestConfig": "libs/shared-interfaces/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared-interfaces/src/**/*.ts",
+              "libs/shared-interfaces/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "todos": {
       "projectType": "application",
       "schematics": {
@@ -242,5 +267,16 @@
         }
       }
     }
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {}
   }
 }
