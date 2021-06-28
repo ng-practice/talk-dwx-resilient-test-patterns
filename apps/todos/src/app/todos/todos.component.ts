@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { delay, switchMap, tap } from 'rxjs/operators';
 import { Todo } from './models';
 import { TodosService } from './shared/todos.service';
 import { APP_TITLE } from './tokens';
@@ -21,6 +21,7 @@ export class TodosComponent implements OnInit, OnDestroy {
   private sink = new Subscription();
 
   todos: Todo[] = [];
+  waitingMessage = '';
 
   @HostBinding('class') cssClass = 'todo__app';
 
@@ -54,7 +55,14 @@ export class TodosComponent implements OnInit, OnDestroy {
     this.sink.add(
       this.todosService
         .create(newTodo)
-        .pipe(switchMap(() => this.todosService.query()))
+        .pipe(
+          switchMap(() => this.todosService.query()),
+          /** tweaking for showing negative test assertion in cypress */
+          delay(200),
+          tap(() => (this.waitingMessage = 'The test did not see me coming')),
+          delay(2000),
+          tap(() => (this.waitingMessage = ''))
+        )
         .subscribe((todos) => (this.todos = todos))
     );
   }
