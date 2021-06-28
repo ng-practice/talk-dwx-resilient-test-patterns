@@ -58,9 +58,9 @@ export class TodosComponent implements OnInit, OnDestroy {
         .pipe(
           switchMap(() => this.todosService.query()),
           /** tweaking for showing negative test assertion in cypress */
-          delay(2000),
-          tap(() => (this.waitingMessage = 'Loading Todos...')),
           delay(200),
+          tap(() => (this.waitingMessage = 'The test did not see me coming')),
+          delay(2000),
           tap(() => (this.waitingMessage = ''))
         )
         .subscribe((todos) => (this.todos = todos))
