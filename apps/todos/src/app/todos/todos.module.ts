@@ -6,6 +6,7 @@ import { TodoQuickAddComponent } from './todo-quick-add/todo-quick-add.component
 import { TodosRoutingModule } from './todos-routing.module';
 import { TodosComponent } from './todos.component';
 import { TodosLinkNavigationComponent } from './todos-link-navigation/todos-link-navigation.component';
+import { TodosComponent as TodosSimpleComponent } from './todos-simple/todos-simple.component';
 
 @NgModule({
   declarations: [
@@ -13,9 +14,10 @@ import { TodosLinkNavigationComponent } from './todos-link-navigation/todos-link
     TodoQuickAddComponent,
     TodosComponent,
     TodoCounterComponent,
-    TodosLinkNavigationComponent
+    TodosLinkNavigationComponent,
+    TodosSimpleComponent,
   ],
   imports: [CommonModule, TodosRoutingModule],
-  exports: [TodosComponent]
+  exports: [TodosComponent],
 })
 export class TodosModule {}
